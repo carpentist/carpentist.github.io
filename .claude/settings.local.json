@@ -1,0 +1,28 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npm --version)",
+      "Bash(npm create *)",
+      "Bash(npm install *)",
+      "Bash(npx tsc *)",
+      "Bash(npm run *)",
+      "Bash(npx vite *)",
+      "Bash(curl -s http://localhost:5173)",
+      "WebFetch(domain:localhost)",
+      "Bash(taskkill /F /IM node.exe)",
+      "Read(//c/Users/phc/Desktop/jobhunter/**)",
+      "Bash(python3 -c ' *)",
+      "Bash(python -c ' *)",
+      "Bash(pip install *)",
+      "Read(//e/tmp/**)",
+      "Bash(unzip -o \"C:\\\\Users\\\\phc\\\\Desktop\\\\jobhunter\\\\简历short - 副本.docx\" word/document.xml)",
+      "Bash(python *)",
+      "WebFetch(domain:chenzijun-web.pages.dev)",
+      "Bash(curl *)",
+      "Bash(git --version)",
+      "Bash(git init *)",
+      "Bash(git add *)",
+      "Bash(git commit -m ' *)"
+    ]
+  }
+}

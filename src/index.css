@@ -1,0 +1,145 @@
+@import "tailwindcss";
+
+@theme {
+  --color-accent: #06b6d4;
+  --color-surface: #0c0c14;
+  --color-surface-elevated: #12121d;
+  --color-border: rgb(255 255 255 / 0.06);
+  --color-border-hover: rgb(255 255 255 / 0.12);
+}
+
+html {
+  scroll-behavior: smooth;
+  background-color: #030305;
+}
+
+body {
+  background-color: #030305;
+  color: #d4d4d8;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+::selection {
+  background-color: rgb(6 182 212 / 0.2);
+  color: #fafafa;
+}
+
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: rgb(255 255 255 / 0.05); border-radius: 2px; }
+::-webkit-scrollbar-thumb:hover { background: rgb(255 255 255 / 0.1); }
+
+/* ===== BACKGROUND DEPTH LAYERS ===== */
+
+/* Layer 0: base — deepest */
+.bg-base {
+  background-color: #030305;
+}
+
+/* Layer 1: subtle radial vignette */
+.bg-vignette {
+  background: radial-gradient(ellipse 60% 50% at 50% 40%, rgb(15 15 25 / 0.5) 0%, transparent 100%);
+}
+
+/* Layer 2: dot grid texture */
+.bg-dots {
+  background-image: radial-gradient(rgb(255 255 255 / 0.025) 0.5px, transparent 0.5px);
+  background-size: 28px 28px;
+}
+
+/* Layer 3: horizontal scan line — very subtle */
+.bg-scanlines {
+  background-image: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 2px,
+    rgb(0 0 0 / 0.03) 2px,
+    rgb(0 0 0 / 0.03) 4px
+  );
+}
+
+/* ===== ELEVATED CARD — 立体感 ===== */
+.card-elevated {
+  background: linear-gradient(
+    135deg,
+    rgb(18 18 27 / 0.9) 0%,
+    rgb(14 14 22 / 0.8) 50%,
+    rgb(10 10 16 / 0.9) 100%
+  );
+  border: 1px solid rgb(255 255 255 / 0.06);
+  /* Inner light border on top-left, shadow on bottom-right */
+  box-shadow:
+    0 1px 0 rgb(255 255 255 / 0.03) inset,
+    0 8px 32px -8px rgb(0 0 0 / 0.4),
+    0 2px 4px -2px rgb(0 0 0 / 0.3);
+}
+
+.card-elevated-hover {
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+              border-color 0.4s ease,
+              box-shadow 0.4s ease;
+}
+.card-elevated-hover:hover {
+  transform: translateY(-2px);
+  border-color: rgb(255 255 255 / 0.12);
+  box-shadow:
+    0 1px 0 rgb(255 255 255 / 0.04) inset,
+    0 16px 48px -12px rgb(0 0 0 / 0.5),
+    0 2px 4px -2px rgb(0 0 0 / 0.3),
+    0 0 40px -15px rgb(6 182 212 / 0.06);
+}
+
+/* ===== SECTION DIVIDER — depth edge ===== */
+.section-divider {
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgb(255 255 255 / 0.03) 15%,
+    rgb(255 255 255 / 0.06) 50%,
+    rgb(255 255 255 / 0.03) 85%,
+    transparent
+  );
+  /* Subtle shadow below for depth */
+  box-shadow: 0 1px 0 rgb(0 0 0 / 0.2);
+}
+
+/* ===== TERMINAL PROMPT ===== */
+.terminal-prompt::before {
+  content: "$ ";
+  color: #06b6d4;
+  font-family: inherit;
+}
+
+/* ===== GLOW ORB ===== */
+.glow-orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(140px);
+  pointer-events: none;
+  opacity: 0.5;
+}
+
+/* ===== REVEAL ANIMATION ===== */
+.reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ===== KEYFRAMES ===== */
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-4px); }
+}
+@keyframes fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
