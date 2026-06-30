@@ -1,10 +1,25 @@
 import { useScrollReveal } from '../hooks/useScrollReveal';
+import TiltCard from './TiltCard';
+import CodeBackground from './CodeBackground';
 
 export default function Projects() {
   const { ref, visible } = useScrollReveal();
 
   return (
-    <section id="projects" className="relative py-24 lg:py-32">
+    <section id="projects" className="bg-projects relative overflow-hidden py-24 lg:py-32">
+      <CodeBackground className="right-8 top-16 text-[#5F7F9A] lg:right-16">
+        <span className="text-[#F28A57]">public class</span> <span className="text-[#6C8AA3]">RAGPipeline</span> {'{'}{'\n'}{'\n'}
+        {'  '}<span className="text-[#F28A57]">private final</span> <span className="text-[#6C8AA3]">Embedder</span> <span className="text-[#A3A9B0]">embedder</span>;{'\n'}
+        {'  '}<span className="text-[#F28A57]">private final</span> <span className="text-[#6C8AA3]">Retriever</span> <span className="text-[#A3A9B0]">retriever</span>;{'\n'}
+        {'  '}<span className="text-[#F28A57]">private final</span> <span className="text-[#6C8AA3]">Reranker</span> <span className="text-[#A3A9B0]">reranker</span>;{'\n'}{'\n'}
+        {'  '}<span className="text-[#F28A57]">public</span> <span className="text-[#6C8AA3]">Response</span> <span className="text-[#A3A9B0]">query</span>(<span className="text-[#6C8AA3]">String</span> <span className="text-[#A3A9B0]">q</span>) {'{'}{'\n'}
+        {'    '}<span className="text-[#F28A57]">var</span> <span className="text-[#A3A9B0]">embed</span> = <span className="text-[#A3A9B0]">embedder</span>.<span className="text-[#A3A9B0]">embed</span>(<span className="text-[#A3A9B0]">q</span>);{'\n'}
+        {'    '}<span className="text-[#F28A57]">var</span> <span className="text-[#A3A9B0]">docs</span> = <span className="text-[#A3A9B0]">retriever</span>.<span className="text-[#A3A9B0]">search</span>(<span className="text-[#A3A9B0]">embed</span>);{'\n'}
+        {'    '}<span className="text-[#F28A57]">var</span> <span className="text-[#A3A9B0]">ranked</span> = <span className="text-[#A3A9B0]">reranker</span>.<span className="text-[#A3A9B0]">rerank</span>(<span className="text-[#A3A9B0]">q</span>, <span className="text-[#A3A9B0]">docs</span>);{'\n'}
+        {'    '}<span className="text-[#F28A57]">return</span> <span className="text-[#A3A9B0]">llm</span>.<span className="text-[#A3A9B0]">generate</span>(<span className="text-[#A3A9B0]">q</span>, <span className="text-[#A3A9B0]">ranked</span>);{'\n'}
+        {'  '}{'\n'}
+        {'}'}
+      </CodeBackground>
       <div className="section-divider mb-24 lg:mb-32" />
 
       <div ref={ref} className={`reveal ${visible ? 'visible' : ''}`}>
@@ -18,7 +33,7 @@ export default function Projects() {
             </h2>
           </div>
 
-          <div className="card-elevated card-elevated-hover group overflow-hidden rounded-2xl">
+          <TiltCard maxTilt={4} className="card-elevated group rounded-2xl">
             {/* Content area */}
             <div className="p-8 lg:p-10">
               {/* Header */}
@@ -73,7 +88,7 @@ export default function Projects() {
 
               {/* Tech tags */}
               <div className="flex flex-wrap gap-2">
-                {['Spring Boot', 'LangChain', 'Elasticsearch', 'Redis', 'PostgreSQL', 'Vue'].map(
+                {['Java21', 'Spring Boot', 'LangChain4j', 'Milvus'].map(
                   (t) => (
                     <span
                       key={t}
@@ -85,7 +100,7 @@ export default function Projects() {
                 )}
               </div>
             </div>
-          </div>
+          </TiltCard>
         </div>
       </div>
     </section>

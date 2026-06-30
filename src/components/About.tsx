@@ -1,25 +1,25 @@
 import { useScrollReveal } from '../hooks/useScrollReveal';
+import CodeBackground from './CodeBackground';
 
 export default function About() {
   const { ref, visible } = useScrollReveal();
 
   return (
-    <section id="about" className="relative overflow-hidden py-24 lg:py-32">
-      <div className="section-divider mb-24 lg:mb-32" />
-
-      {/* Subtle geometric decoration */}
-      <svg
-        className="pointer-events-none absolute -right-24 top-1/2 h-64 w-64 -translate-y-1/2 opacity-[0.04] lg:h-96 lg:w-96"
-        viewBox="0 0 300 300"
-        fill="none"
-      >
-        <rect x="40" y="40" width="100" height="100" rx="3" stroke="white" strokeWidth="0.5" />
-        <rect x="160" y="40" width="100" height="100" rx="3" stroke="white" strokeWidth="0.5" />
-        <rect x="40" y="160" width="100" height="100" rx="3" stroke="white" strokeWidth="0.5" />
-        <rect x="160" y="160" width="100" height="100" rx="3" stroke="white" strokeWidth="0.5" />
-        <rect x="70" y="70" width="40" height="40" rx="1" fill="#06b6d4" opacity="0.15" />
-        <rect x="190" y="190" width="40" height="40" rx="1" fill="white" opacity="0.06" />
-      </svg>
+    <section id="about" className="bg-about relative overflow-hidden py-24 lg:py-32">
+      <CodeBackground className="right-8 top-24 text-[#6C8AA3] lg:right-24">
+        <span className="text-[#F3A07A]">@Service</span>{'\n'}
+        <span className="text-[#F28A57]">public class</span> <span className="text-[#6C8AA3]">UserService</span> {'{'}{'\n'}{'\n'}
+        {'  '}<span className="text-[#F28A57]">private final</span> <span className="text-[#6C8AA3]">UserRepository</span> <span className="text-[#A3A9B0]">repo</span>;{'\n'}
+        {'  '}<span className="text-[#F28A57]">private final</span> <span className="text-[#6C8AA3]">CacheManager</span> <span className="text-[#A3A9B0]">cache</span>;{'\n'}{'\n'}
+        {'  '}<span className="text-[#F28A57]">public</span> <span className="text-[#6C8AA3]">UserDTO</span> <span className="text-[#A3A9B0]">findById</span>(<span className="text-[#6C8AA3]">Long</span> <span className="text-[#A3A9B0]">id</span>) {'{'}{'\n'}
+        {'    '}<span className="text-[#F28A57]">return</span> <span className="text-[#A3A9B0]">cache</span>.<span className="text-[#A3A9B0]">getOrLoad</span>(<span className="text-[#A3A9B0]">id</span>,{'\n'}
+        {'      '}() -&gt; <span className="text-[#A3A9B0]">repo</span>.<span className="text-[#A3A9B0]">findById</span>(<span className="text-[#A3A9B0]">id</span>){'\n'}
+        {'        '}.<span className="text-[#A3A9B0]">orElseThrow</span>(<span className="text-[#6C8AA3]">NotFoundException</span>::<span className="text-[#F28A57]">new</span>){'\n'}
+        {'    '});{'\n'}
+        {'  }\n'}
+        {'}\n'}
+      </CodeBackground>
+      <div className="section-divider-accent mb-24 lg:mb-32" />
 
       <div ref={ref} className={`reveal ${visible ? 'visible' : ''}`}>
         <div className="mx-auto max-w-[1700px] px-8 lg:px-16">

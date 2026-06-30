@@ -1,10 +1,26 @@
 import { useScrollReveal } from '../hooks/useScrollReveal';
+import TiltCard from './TiltCard';
+import CodeBackground from './CodeBackground';
 
 export default function Contact() {
   const { ref, visible } = useScrollReveal();
 
   return (
-    <section id="contact" className="relative py-24 lg:py-32">
+    <section id="contact" className="bg-contact relative overflow-hidden py-24 lg:py-32">
+      <CodeBackground className="left-8 top-12 text-[#7B8FA1] lg:left-20">
+        <span className="text-[#F3A07A]">@RestController</span>{'\n'}
+        <span className="text-[#F28A57]">public class</span> <span className="text-[#6C8AA3]">ContactController</span> {'{'}{'\n'}{'\n'}
+        {'  '}<span className="text-[#F3A07A]">@GetMapping</span>(<span className="text-[#7B8FA1]">"/api/contact"</span>){'\n'}
+        {'  '}<span className="text-[#F28A57]">public</span> <span className="text-[#6C8AA3]">ResponseEntity</span>{'<'}<span className="text-[#6C8AA3]">Profile</span>{'>'} <span className="text-[#A3A9B0]">contact</span>() {'{'}{'\n'}
+        {'    '}<span className="text-[#F28A57]">return</span> <span className="text-[#6C8AA3]">ResponseEntity</span>.<span className="text-[#A3A9B0]">ok</span>({'\n'}
+        {'      '}<span className="text-[#6C8AA3]">Profile</span>.<span className="text-[#A3A9B0]">builder</span>(){'\n'}
+        {'        '}.<span className="text-[#A3A9B0]">github</span>(<span className="text-[#7B8FA1]">"carpentist"</span>){'\n'}
+        {'        '}.<span className="text-[#A3A9B0]">status</span>(<span className="text-[#7B8FA1]">"Open to opportunities"</span>){'\n'}
+        {'        '}.<span className="text-[#A3A9B0]">build</span>(){'\n'}
+        {'    '});{'\n'}
+        {'  '}{'\n'}
+        {'}'}
+      </CodeBackground>
       <div className="section-divider mb-24 lg:mb-32" />
 
       <div ref={ref} className={`reveal ${visible ? 'visible' : ''}`}>
@@ -23,11 +39,13 @@ export default function Contact() {
           </p>
 
           <div className="grid gap-4 sm:grid-cols-2">
-            <a
+            <TiltCard
+              as="a"
               href="https://github.com/carpentist"
               target="_blank"
               rel="noopener noreferrer"
-              className="card-elevated card-elevated-hover group flex items-center gap-5 rounded-xl p-6"
+              maxTilt={5}
+              className="card-elevated group flex items-center gap-5 rounded-xl p-6"
             >
               <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-zinc-900">
                 <svg className="h-5 w-5 text-zinc-500" fill="currentColor" viewBox="0 0 24 24">
@@ -41,8 +59,9 @@ export default function Contact() {
               <span className="ml-auto shrink-0 font-mono text-xs text-zinc-700 transition-colors group-hover:text-accent/60">
                 →
               </span>
-            </a>
-            <div className="card-elevated flex items-center gap-5 rounded-xl p-6">
+            </TiltCard>
+
+            <TiltCard maxTilt={5} className="card-elevated flex items-center gap-5 rounded-xl p-6">
               <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-zinc-900">
                 <svg className="h-5 w-5 text-zinc-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
                   <path strokeLinecap="round" strokeLinejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75" />
@@ -52,7 +71,7 @@ export default function Contact() {
                 <h3 className="text-sm font-medium text-zinc-400">Email</h3>
                 <p className="text-xs text-zinc-600">3260282046@qq.com</p>
               </div>
-            </div>
+            </TiltCard>
           </div>
         </div>
       </div>

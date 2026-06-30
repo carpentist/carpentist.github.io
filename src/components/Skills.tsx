@@ -1,4 +1,5 @@
 import { useScrollReveal } from '../hooks/useScrollReveal';
+import CodeBackground from './CodeBackground';
 
 const categories = [
   {
@@ -23,7 +24,24 @@ export default function Skills() {
   const { ref, visible } = useScrollReveal();
 
   return (
-    <section id="skills" className="relative py-24 lg:py-32">
+    <section id="skills" className="bg-skills relative overflow-hidden py-24 lg:py-32">
+      <CodeBackground className="left-8 top-20 text-[#7B8FA1] lg:left-20">
+        <span className="text-[#7B8FA1]"># application.yml</span>{'\n'}
+        <span className="text-[#F28A57]">spring:</span>{'\n'}
+        {'  '}<span className="text-[#F28A57]">datasource:</span>{'\n'}
+        {'    '}<span className="text-[#A3A9B0]">url:</span> <span className="text-[#6C8AA3]">jdbc:mysql://localhost:3306/db</span>{'\n'}
+        {'  '}<span className="text-[#F28A57]">redis:</span>{'\n'}
+        {'    '}<span className="text-[#A3A9B0]">host:</span> <span className="text-[#6C8AA3]">localhost</span>{'\n'}
+        {'    '}<span className="text-[#A3A9B0]">port:</span> <span className="text-[#A3A9B0]">6379</span>{'\n'}
+        {'  '}<span className="text-[#F28A57]">kafka:</span>{'\n'}
+        {'    '}<span className="text-[#A3A9B0]">bootstrap-servers:</span> <span className="text-[#6C8AA3]">localhost:9092</span>{'\n'}{'\n'}
+        <span className="text-[#F28A57]">ai:</span>{'\n'}
+        {'  '}<span className="text-[#F28A57]">llm:</span>{'\n'}
+        {'    '}<span className="text-[#A3A9B0]">provider:</span> <span className="text-[#A3A9B0]">ollama</span>{'\n'}
+        {'    '}<span className="text-[#A3A9B0]">model:</span> <span className="text-[#A3A9B0]">qwen3</span>{'\n'}
+        {'  '}<span className="text-[#F28A57]">rag:</span>{'\n'}
+        {'    '}<span className="text-[#A3A9B0]">retriever:</span> <span className="text-[#A3A9B0]">elasticsearch</span>
+      </CodeBackground>
       <div className="section-divider mb-24 lg:mb-32" />
 
       <div ref={ref} className={`reveal ${visible ? 'visible' : ''}`}>
