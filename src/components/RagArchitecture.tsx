@@ -101,7 +101,7 @@ const LAYERS: {
       {
         title: 'ScoredIntentRouter',
         icon: '🎯',
-        desc: '仿 Ragent DefaultIntentClassifier。LLM 打分每个数据源 → 0.35 阈值过滤 → Top-3 截断 → 定向检索。兜底广播保证可用性。',
+        desc: '基于 LLM 的意图分类器。对每个数据源打分 → 0.35 阈值过滤 → Top-3 截断 → 定向检索。无匹配时兜底广播全量检索保证可用性。',
         badge: '核心',
         wide: true,
         classes: ['route(Query)', 'classify()', 'parseAndFilter()', 'IntentScore'],
@@ -141,7 +141,7 @@ const LAYERS: {
       {
         title: 'PipelineEngine',
         icon: '🏗',
-        desc: 'DAG 执行引擎。节点注册 + 顺序执行 + 失败中断 + 日志记录。仿 Ragent IngestionEngine。',
+        desc: 'DAG 执行引擎。节点注册 + 顺序执行 + 失败中断 + 日志记录。支持灵活扩展自定义处理节点。',
         badge: '核心',
         wide: true,
         classes: ['execute(Pipeline, Context)', 'IngestionNode', 'NodeLog'],
