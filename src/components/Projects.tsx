@@ -1,6 +1,7 @@
 import { useScrollReveal } from '../hooks/useScrollReveal';
 import TiltCard from './TiltCard';
 import CodeBackground from './CodeBackground';
+import RagArchitecture from './RagArchitecture';
 
 export default function Projects() {
   const { ref, visible } = useScrollReveal();
@@ -56,25 +57,24 @@ export default function Projects() {
 
               {/* Description */}
               <p className="mb-8 max-w-3xl text-sm leading-relaxed text-zinc-500">
-                增强型检索增强生成平台，集成多路召回与重排序策略，提升大语言模型在垂直领域知识问答中的准确性与可靠性。
+                Enterprise RAG Platform — 基于 LangChain4j + Milvus + 通义千问，从零构建的企业级检索增强生成平台。
+                自主实现了意图路由、多模型熔断、分布式公平限流、对话记忆与摘要压缩等高级 RAG 能力。
               </p>
 
-              {/* Architecture diagram — light bg for transparent image */}
-              <div className="mb-8 overflow-hidden rounded-xl border border-zinc-200 bg-zinc-100">
-                <img
-                  src="/rag-architecture.png"
-                  alt="RAG Platform Architecture"
-                  className="mx-auto w-full max-h-[400px] object-contain p-4"
-                />
+              {/* Architecture diagram */}
+              <div className="mb-8">
+                <RagArchitecture />
               </div>
 
               {/* Highlights */}
               <div className="mb-8 grid gap-2 sm:grid-cols-2">
                 {[
-                  '多种文档分块策略+多种查询转换策略',
-                  '文档解析与向量化 Pipeline',
-                  '多路召回 + 重排序融合策略',
-                  'OpenAI 兼容协议',
+                  'LLM 意图路由 — 自动打分定向检索数据源',
+                  '多 Provider 路由 + 三段式断路器熔断',
+                  'Redisson + Lua 分布式公平限流',
+                  'Redis 热缓存 + PG 持久化对话记忆',
+                  'DAG 文档摄取管道（6 节点）',
+                  '多路召回 RRF 融合 + Reranker 精排',
                 ].map((h) => (
                   <div
                     key={h}
@@ -88,7 +88,11 @@ export default function Projects() {
 
               {/* Tech tags */}
               <div className="flex flex-wrap gap-2">
-                {['Java21', 'Spring Boot', 'LangChain4j', 'Milvus'].map(
+                {[
+                  'Java 21', 'Spring Boot 3.5', 'LangChain4j 1.1',
+                  'Milvus 2.4', 'PostgreSQL 17', 'Redis',
+                  'Redisson', 'DashScope Qwen', 'Apache Tika',
+                ].map(
                   (t) => (
                     <span
                       key={t}
